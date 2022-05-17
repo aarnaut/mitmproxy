@@ -25,6 +25,9 @@ from mitmproxy.addons import stickycookie
 from mitmproxy.addons import save
 from mitmproxy.addons import tlsconfig
 from mitmproxy.addons import upstream_auth
+from mitmproxy.addons.grpc_modifybody import GrpcModifyBody
+from mitmproxy.utils import protoc
+from mitmproxy.utils.protoc import serializer
 
 
 def default_addons():
@@ -56,4 +59,5 @@ def default_addons():
         save.Save(),
         tlsconfig.TlsConfig(),
         upstream_auth.UpstreamAuth(),
+        GrpcModifyBody(protoc.serializer)
     ]
